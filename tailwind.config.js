@@ -1,4 +1,6 @@
 module.exports = {
+  mode: 'jit',
+
   future: {
     removeDeprecatedGapUtilities: true,
   },

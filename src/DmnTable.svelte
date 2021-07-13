@@ -1,3 +1,5 @@
+<svelte:options tag="flx-dmn-table" />
+
 <script lang="ts">
   import { range as _range } from 'lodash/fp'
 
@@ -47,37 +49,56 @@
 <table>
   <thead>
     <tr>
-      <th class="py-10 border" />
+      <th class="table-header" />
       {#each inputs as inputHead}
-        <th class="py-10 px-5 border">{inputHead.label}</th>
+        <th class="table-header">{inputHead.label}</th>
       {/each}
 
       {#each outputs as outputHead}
-        <th class="py-10 px-5 border">{outputHead.label}</th>
+        <th class="table-header">{outputHead.label}</th>
       {/each}
 
-      <th class="py-10 px-5 border">Annotations</th>
+      <th class="table-header">Annotations</th>
     </tr>
   </thead>
   <tbody>
     {#each rules as rule, i}
-      <tr class="border">
-        <td class="border">{i + 1}</td>
+      <tr class="border-data">
+        <td class="border-data">{i + 1}</td>
         {#each rule.inputEntries as inputEntry}
-          <td class="border">
+          <td class="border-data">
             <input bind:value={inputEntry} />
           </td>
         {/each}
       </tr>
     {/each}
 
-    <tr class="border">
-      <td class="border"><button class="text-blue-500" on:click={addRow}>+</button></td>
-      <td class="border" />
-      <td class="border" />
-      <td class="border" />
+    <tr class="border-data">
+      <td class="border-data"><button class="add-button" on:click={addRow}>+</button></td>
+      <td class="border-data" />
+      <td class="border-data" />
+      <td class="border-data" />
     </tr>
   </tbody>
 </table>
 
-<button class="mt-4 rounded-md bg-blue-500 text-white px-4 py-2" on:click={logDmn}>Log</button>
+<button class="button" on:click={logDmn}>Log</button>
+
+<style lang="postcss">
+  @tailwind base;
+  .button {
+    @apply mt-4 rounded-md bg-blue-500 text-white px-4 py-2;
+  }
+
+  .table-header {
+    @apply py-10 px-5 border;
+  }
+
+  .border-data {
+    @apply border;
+  }
+
+  .add-button {
+    @apply text-blue-500;
+  }
+</style>
