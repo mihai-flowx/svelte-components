@@ -1,6 +1,6 @@
 <svelte:options tag="flx-button" />
 
-<script>
+<script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte'
   import { get_current_component } from 'svelte/internal'
 
