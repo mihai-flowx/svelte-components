@@ -51,6 +51,13 @@ export default {
           plugins: [require('tailwindcss'), require('autoprefixer')],
         },
       }),
+
+      onwarn: (warning, handler) => {
+        const { code, frame } = warning
+        if (code === 'css-unused-selector') return
+
+        handler(warning)
+      },
     }),
 
     // we'll extract any component CSS out into

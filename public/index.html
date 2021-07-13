@@ -9,9 +9,26 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
 
     <script defer src="./build/bundle.js"></script>
+
+    <style>
+      .custom-button::part(button) {
+        width: 100%;
+        height: 400px;
+      }
+    </style>
   </head>
 
   <body>
-    <flx-button label="Salut FLX"></flx-button>
+    <flx-button label="Salut FLX" style="width: 400px; height: 400px"></flx-button>
+
+    <div style="width: 600px">
+      <flx-button label="Salut FLX 2" class="custom-button"></flx-button>
+    </div>
+
+    <script>
+      document
+        .getElementsByTagName('flx-button')[0]
+        .addEventListener('message', (event) => console.log('event', event))
+    </script>
   </body>
 </html>
